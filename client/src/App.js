@@ -44,7 +44,7 @@ function App() {
       logEntries.map(entry => (
           <Marker key={entry._id} longitude={entry.long} latitude={entry.lat} anchor="bottom" >
             <div onClick={() => {
-              console.log("clicked", showPopup);
+              // console.log("clicked", showPopup);
               setShowPopup({...entry})
             }}>
               <svg className="marker" style={{width: "24px",height: "24px"}} viewBox="0 0 24 24" fill="none" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -57,7 +57,9 @@ function App() {
     {showPopup && (
       <Popup longitude={showPopup.long} latitude={showPopup.lat} className="popup"
         anchor="right"
-        onClose={() => setShowPopup(false)}>
+        key={showPopup._id}
+        // onClose={() => setShowPopup(false)}
+        >
         <div>
           <h3> {showPopup.title} </h3>
           <p> {showPopup.comments} </p>
